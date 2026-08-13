@@ -1,0 +1,7 @@
+:root{
+--r-xs:8px;--r-sm:12px;--r-md:18px;--r-lg:24px;--r-xl:32px;--r-2xl:44px;--r-pill:999px;
+--r-card:var(--r-lg);--r-button:var(--r-md);--r-photo:var(--r-xl);--r-medallion:var(--r-pill);
+/* organic blob used for hero / CTA photography */
+--blob-hero:58% 42% 46% 54% / 46% 40% 60% 54%;/* @kind other */
+--blob-soft:46% 54% 58% 42% / 52% 46% 54% 48%;/* @kind other */
+}

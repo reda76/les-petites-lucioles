@@ -1,0 +1,23 @@
+:root{
+/* --- Violet (logo colour, brand primary) --- */
+--violet-950:#3a2a55;--violet-900:#4c3865;--violet-800:#593f7e;--violet-700:#6b4f92;--violet-600:#7f63a6;--violet-500:#9b83bd;--violet-400:#b4a6c8;--violet-300:#cfc0e2;--violet-200:#e9d8f7;--violet-100:#efe8f5;--violet-50:#f6f1fa;
+/* --- Jaune / miel (accent, used sparingly) --- */
+--jaune-700:#c9992e;--jaune-600:#e6b53f;--jaune-500:#f2ca5c;--jaune-400:#f8dd93;--jaune-300:#fbe7b4;--jaune-200:#ffe9c7;--jaune-100:#fff3d9;--jaune-50:#fff9e9;
+/* --- Écru / beige neutrals (page ground, never white-white) --- */
+--ecru-0:#fffbf8;--ecru-50:#fff8f3;--ecru-100:#fdf3ea;--ecru-200:#f7ede1;--ecru-300:#efe3d4;--ecru-400:#e3d4c2;
+/* --- Encre (text) --- */
+--encre-900:#2b2531;--encre-700:#4a4350;--encre-500:#6d6575;--encre-400:#8d8593;
+/* --- Semantic surfaces --- */
+--surface-page:var(--ecru-50);--surface-card:var(--ecru-0);--surface-sunken:var(--ecru-100);--surface-soft-violet:var(--violet-50);--surface-soft-jaune:var(--jaune-50);--surface-inverse:var(--violet-800);--surface-photo-mat:var(--jaune-100);
+/* --- Semantic text --- */
+--text-body:var(--encre-700);--text-strong:var(--encre-900);--text-muted:var(--encre-500);--text-display:var(--violet-900);--text-accent:var(--violet-800);--text-eyebrow:var(--violet-400);--text-on-inverse:var(--ecru-0);--text-on-inverse-muted:var(--violet-300);
+/* --- Semantic lines & marks --- */
+--border-soft:var(--ecru-300);--border-violet:var(--violet-300);--rule-violet:var(--violet-300);--rule-jaune:var(--jaune-500);
+/* --- Interactive --- */
+--action-primary:var(--violet-800);--action-primary-hover:var(--violet-900);--action-primary-press:var(--violet-950);--action-primary-text:var(--ecru-0);
+--action-secondary-border:var(--violet-600);--action-secondary-text:var(--violet-800);--action-secondary-hover-bg:var(--violet-50);
+--action-accent:var(--jaune-300);--action-accent-hover:var(--jaune-400);--action-accent-text:var(--violet-900);
+--focus-ring:var(--violet-600);
+/* --- Icon medallions --- */
+--medallion-violet:var(--violet-100);--medallion-jaune:var(--jaune-200);--medallion-icon:var(--violet-800);
+}

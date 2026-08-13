@@ -1,0 +1,9 @@
+:root{
+/* shadows are warm-tinted and very soft — never neutral grey */
+--shadow-xs:0 1px 2px rgba(90,64,40,.05);
+--shadow-card:0 8px 28px rgba(122,90,58,.07);
+--shadow-card-hover:0 14px 38px rgba(122,90,58,.11);
+--shadow-photo:0 18px 46px rgba(122,90,58,.13);
+--shadow-button:0 6px 16px rgba(89,63,126,.20);
+--shadow-inset-soft:inset 0 0 0 1px rgba(233,216,247,.7);
+}
