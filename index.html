@@ -4802,6 +4802,7 @@ const {
   ArrowLink: AL3,
   CTABanner: CTA3
 } = DS;
+const GERTRUDE = "https://lespetiteslucioles.gertrude-logiciel.org/preinscription";
 function FAQ({
   items
 }) {
@@ -4845,50 +4846,12 @@ function FAQ({
   }, a) : null)));
 }
 function PreinscriptionScreen() {
-  const [sent, setSent] = React.useState(false);
-  const [lieu, setLieu] = React.useState("Bosgouet");
-  const [ok, setOk] = React.useState(false);
-  const [prenom, setPrenom] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [touched, setTouched] = React.useState(false);
-  const emailInvalid = touched && !/.+@.+\..+/.test(email);
-  if (sent) {
-    return /*#__PURE__*/React.createElement(Section, {
-      py: "var(--sp-24)"
-    }, /*#__PURE__*/React.createElement(C3, {
-      style: {
-        maxWidth: 620,
-        margin: "0 auto",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "var(--sp-5)",
-        padding: "var(--sp-16)"
-      }
-    }, /*#__PURE__*/React.createElement(M3, {
-      icon: "heart-handshake",
-      tone: "jaune",
-      size: 72
-    }), /*#__PURE__*/React.createElement("h2", {
-      style: {
-        font: "var(--type-section)"
-      }
-    }, "Merci ", prenom ? `pour ${prenom}` : "", " !"), /*#__PURE__*/React.createElement("p", {
-      style: {
-        font: "var(--type-body)"
-      }
-    }, "Votre demande de pr\xE9-inscription pour ", lieu, " est bien enregistr\xE9e. L'\xE9quipe vous recontacte sous 48 heures."), /*#__PURE__*/React.createElement(B3, {
-      variant: "secondary",
-      onClick: () => setSent(false)
-    }, "Envoyer une autre demande")));
-  }
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Section, {
     py: "var(--sp-12)"
   }, /*#__PURE__*/React.createElement(SH3, {
     eyebrow: "Pr\xE9-inscription",
     title: "Et si votre enfant devenait une petite Luciole ?",
-    lead: "Quelques informations suffisent \u2014 nous revenons vers vous pour convenir d'une visite."
+    lead: "La pr\xE9-inscription se fait en ligne, en quelques minutes \u2014 nous revenons vers vous pour convenir d'une visite."
   })), /*#__PURE__*/React.createElement(Section, {
     tone: "card",
     py: "var(--section-y-tight)"
@@ -4901,102 +4864,47 @@ function PreinscriptionScreen() {
     }
   }, /*#__PURE__*/React.createElement(C3, {
     style: {
-      padding: "var(--sp-12)"
+      padding: "var(--sp-12)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      gap: "var(--sp-5)"
     }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "rgrid-form",
+  }, /*#__PURE__*/React.createElement(M3, {
+    icon: "clipboard-list",
+    tone: "jaune",
+    size: 64
+  }), /*#__PURE__*/React.createElement("h3", {
     style: {
-      display: "grid",
-      gap: "var(--sp-6)"
+      font: "var(--type-card-title)",
+      fontSize: "var(--fs-title)",
+      color: "var(--text-accent)"
     }
-  }, /*#__PURE__*/React.createElement(F3, {
-    label: "Pr\xE9nom de l'enfant",
-    required: true
-  }, /*#__PURE__*/React.createElement(I3, {
-    value: prenom,
-    onChange: e => setPrenom(e.target.value),
-    placeholder: "Camille"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Date de naissance (ou terme pr\xE9vu)"
-  }, /*#__PURE__*/React.createElement(I3, {
-    type: "date"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Votre nom",
-    required: true
-  }, /*#__PURE__*/React.createElement(I3, {
-    placeholder: "Dupont"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "T\xE9l\xE9phone"
-  }, /*#__PURE__*/React.createElement(I3, {
-    type: "tel",
-    placeholder: "06 12 34 56 78"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Adresse e-mail",
-    required: true,
+  }, "Pr\xE9-inscrivez votre enfant en ligne"), /*#__PURE__*/React.createElement("p", {
     style: {
-      gridColumn: "span 2"
-    },
-    error: emailInvalid ? "Merci d'indiquer une adresse valide." : null,
-    hint: "Nous vous r\xE9pondons sous 48 h."
-  }, /*#__PURE__*/React.createElement(I3, {
-    type: "email",
-    value: email,
-    invalid: emailInvalid,
-    onBlur: () => setTouched(true),
-    onChange: e => setEmail(e.target.value),
-    placeholder: "vous@exemple.fr"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Micro-cr\xE8che souhait\xE9e",
-    style: {
-      gridColumn: "span 2"
+      font: "var(--type-body)",
+      maxWidth: "52ch"
     }
-  }, /*#__PURE__*/React.createElement(RG3, {
-    options: ["Bosgouet", "Routot", "Peu importe"],
-    value: lieu,
-    onChange: setLieu
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Type d'accueil"
-  }, /*#__PURE__*/React.createElement(S3, {
-    options: ["Temps plein", "Temps partiel", "Accueil occasionnel"]
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Date d'entr\xE9e souhait\xE9e"
-  }, /*#__PURE__*/React.createElement(I3, {
-    type: "date"
-  })), /*#__PURE__*/React.createElement(F3, {
-    label: "Votre message",
+  }, "Renseignez vos coordonn\xE9es, celles de votre enfant et vos besoins d'accueil sur notre portail s\xE9curis\xE9. Quelques minutes suffisent, et c'est sans engagement : l'\xE9quipe vous recontacte sous 48 heures pour convenir d'une visite."), /*#__PURE__*/React.createElement("div", {
+    className: "btn-row",
     style: {
-      gridColumn: "span 2"
-    }
-  }, /*#__PURE__*/React.createElement(I3, {
-    multiline: true,
-    rows: 4,
-    placeholder: "Parlez-nous de votre enfant, de vos horaires, de vos questions\u2026"
-  })), /*#__PURE__*/React.createElement(Ck3, {
-    checked: ok,
-    onChange: setOk,
-    label: "J'accepte d'\xEAtre recontact\xE9(e) par l'\xE9quipe des Lucioles au sujet de ma demande.",
-    style: {
-      gridColumn: "span 2"
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "form-actions",
-    style: {
-      gridColumn: "span 2",
       display: "flex",
       gap: "var(--gap-inline)",
-      alignItems: "center"
+      flexWrap: "wrap",
+      marginTop: "var(--sp-2)"
     }
   }, /*#__PURE__*/React.createElement(B3, {
     variant: "accent",
     icon: "clipboard-list",
-    disabled: !ok,
-    onClick: () => ok && setSent(true)
-  }, "Envoyer ma pr\xE9-inscription"), /*#__PURE__*/React.createElement("span", {
+    href: GERTRUDE,
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Remplir la pr\xE9-inscription")), /*#__PURE__*/React.createElement("span", {
     style: {
       font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)",
       color: "var(--text-muted)"
     }
-  }, "Sans engagement.")))), /*#__PURE__*/React.createElement("div", {
+  }, "Le formulaire s'ouvre dans un nouvel onglet, sur Gertrude \u2014 notre outil s\xE9curis\xE9 de gestion des pr\xE9-inscriptions.")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       flexDirection: "column",
@@ -5017,7 +4925,7 @@ function PreinscriptionScreen() {
     }
   }, /*#__PURE__*/React.createElement(LI3, {
     icon: "send",
-    title: "1. Vous envoyez le formulaire"
+    title: "1. Vous remplissez le formulaire en ligne"
   }), /*#__PURE__*/React.createElement(LI3, {
     icon: "phone-call",
     title: "2. Nous vous appelons sous 48 h"

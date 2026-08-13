@@ -1,5 +1,7 @@
 const { Button: B3, Card: C3, Field: F3, Input: I3, Select: S3, Checkbox: Ck3, RadioGroup: RG3, SectionHeading: SH3, Medallion: M3, ListItem: LI3, PhotoBlob: PB3, Badge: Bg3, ArrowLink: AL3, CTABanner: CTA3 } = DS;
 
+const GERTRUDE = "https://lespetiteslucioles.gertrude-logiciel.org/preinscription";
+
 function FAQ({ items }) {
   const [open, setOpen] = React.useState(0);
   return (
@@ -18,59 +20,33 @@ function FAQ({ items }) {
 }
 
 function PreinscriptionScreen() {
-  const [sent, setSent] = React.useState(false);
-  const [lieu, setLieu] = React.useState("Bosgouet");
-  const [ok, setOk] = React.useState(false);
-  const [prenom, setPrenom] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [touched, setTouched] = React.useState(false);
-  const emailInvalid = touched && !/.+@.+\..+/.test(email);
-
-  if (sent) {
-    return (
-      <Section py="var(--sp-24)">
-        <C3 style={{ maxWidth: 620, margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--sp-5)", padding: "var(--sp-16)" }}>
-          <M3 icon="heart-handshake" tone="jaune" size={72} />
-          <h2 style={{ font: "var(--type-section)" }}>Merci {prenom ? `pour ${prenom}` : ""} !</h2>
-          <p style={{ font: "var(--type-body)" }}>Votre demande de pré-inscription pour {lieu} est bien enregistrée. L'équipe vous recontacte sous 48 heures.</p>
-          <B3 variant="secondary" onClick={() => setSent(false)}>Envoyer une autre demande</B3>
-        </C3>
-      </Section>
-    );
-  }
-
   return (
     <div>
       <Section py="var(--sp-12)">
-        <SH3 eyebrow="Pré-inscription" title="Et si votre enfant devenait une petite Luciole ?" lead="Quelques informations suffisent — nous revenons vers vous pour convenir d'une visite." />
+        <SH3 eyebrow="Pré-inscription" title="Et si votre enfant devenait une petite Luciole ?" lead="La pré-inscription se fait en ligne, en quelques minutes — nous revenons vers vous pour convenir d'une visite." />
       </Section>
       <Section tone="card" py="var(--section-y-tight)">
         <div className="rgrid-form-layout" style={{ display: "grid", gap: "var(--sp-10)", alignItems: "start" }}>
-          <C3 style={{ padding: "var(--sp-12)" }}>
-            <div className="rgrid-form" style={{ display: "grid", gap: "var(--sp-6)" }}>
-              <F3 label="Prénom de l'enfant" required><I3 value={prenom} onChange={(e) => setPrenom(e.target.value)} placeholder="Camille" /></F3>
-              <F3 label="Date de naissance (ou terme prévu)"><I3 type="date" /></F3>
-              <F3 label="Votre nom" required><I3 placeholder="Dupont" /></F3>
-              <F3 label="Téléphone"><I3 type="tel" placeholder="06 12 34 56 78" /></F3>
-              <F3 label="Adresse e-mail" required style={{ gridColumn: "span 2" }} error={emailInvalid ? "Merci d'indiquer une adresse valide." : null} hint="Nous vous répondons sous 48 h.">
-                <I3 type="email" value={email} invalid={emailInvalid} onBlur={() => setTouched(true)} onChange={(e) => setEmail(e.target.value)} placeholder="vous@exemple.fr" />
-              </F3>
-              <F3 label="Micro-crèche souhaitée" style={{ gridColumn: "span 2" }}><RG3 options={["Bosgouet", "Routot", "Peu importe"]} value={lieu} onChange={setLieu} /></F3>
-              <F3 label="Type d'accueil"><S3 options={["Temps plein", "Temps partiel", "Accueil occasionnel"]} /></F3>
-              <F3 label="Date d'entrée souhaitée"><I3 type="date" /></F3>
-              <F3 label="Votre message" style={{ gridColumn: "span 2" }}><I3 multiline rows={4} placeholder="Parlez-nous de votre enfant, de vos horaires, de vos questions…" /></F3>
-              <Ck3 checked={ok} onChange={setOk} label="J'accepte d'être recontacté(e) par l'équipe des Lucioles au sujet de ma demande." style={{ gridColumn: "span 2" }} />
-              <div className="form-actions" style={{ gridColumn: "span 2", display: "flex", gap: "var(--gap-inline)", alignItems: "center" }}>
-                <B3 variant="accent" icon="clipboard-list" disabled={!ok} onClick={() => ok && setSent(true)}>Envoyer ma pré-inscription</B3>
-                <span style={{ font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)", color: "var(--text-muted)" }}>Sans engagement.</span>
-              </div>
+          <C3 style={{ padding: "var(--sp-12)", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "var(--sp-5)" }}>
+            <M3 icon="clipboard-list" tone="jaune" size={64} />
+            <h3 style={{ font: "var(--type-card-title)", fontSize: "var(--fs-title)", color: "var(--text-accent)" }}>Pré-inscrivez votre enfant en ligne</h3>
+            <p style={{ font: "var(--type-body)", maxWidth: "52ch" }}>
+              Renseignez vos coordonnées, celles de votre enfant et vos besoins d'accueil sur notre
+              portail sécurisé. Quelques minutes suffisent, et c'est sans engagement : l'équipe vous
+              recontacte sous 48 heures pour convenir d'une visite.
+            </p>
+            <div className="btn-row" style={{ display: "flex", gap: "var(--gap-inline)", flexWrap: "wrap", marginTop: "var(--sp-2)" }}>
+              <B3 variant="accent" icon="clipboard-list" href={GERTRUDE} target="_blank" rel="noreferrer">Remplir la pré-inscription</B3>
             </div>
+            <span style={{ font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)", color: "var(--text-muted)" }}>
+              Le formulaire s'ouvre dans un nouvel onglet, sur Gertrude — notre outil sécurisé de gestion des pré-inscriptions.
+            </span>
           </C3>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)" }}>
             <C3 tone="violet">
               <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)", marginBottom: "var(--sp-4)" }}>Comment ça se passe ?</h3>
               <ul style={{ margin: 0, padding: 0 }}>
-                <LI3 icon="send" title="1. Vous envoyez le formulaire" />
+                <LI3 icon="send" title="1. Vous remplissez le formulaire en ligne" />
                 <LI3 icon="phone-call" title="2. Nous vous appelons sous 48 h" />
                 <LI3 icon="calendar-heart" title="3. Vous venez visiter" />
                 <LI3 icon="check" title="4. La place est confirmée" />
