@@ -20,7 +20,7 @@ function MaisonScreen({ go }) {
       <Section py="var(--sp-12)">
         <div style={{ display: "grid", gridTemplateColumns: "1fr .9fr", gap: "var(--sp-16)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
-            <Bg4 icon="house">Bosgouet — depuis 2021</Bg4>
+            <Bg4 icon="house">Bosgouet — depuis février 2024</Bg4>
             <h1 style={{ font: "var(--fw-regular) var(--fs-display-2)/var(--lh-display) var(--font-display)", color: "var(--text-display)" }}>La maison des Lucioles</h1>
             <p style={{ font: "var(--fw-regular) var(--fs-body-lg)/var(--lh-body) var(--font-body)", maxWidth: "52ch" }}>
               Une maison normande transformée en micro-crèche : dix places, de grandes fenêtres, un jardin clos
@@ -41,7 +41,7 @@ function MaisonScreen({ go }) {
           ["map-pin", "Adresse", "60 rue Guy de Milleville, 27310 Bosgouet"],
           ["clock", "Horaires", "Du lundi au vendredi, 7h30 – 18h30"],
           ["users", "Capacité", "10 enfants, de 10 semaines à 4 ans"],
-          ["phone", "Contact", "07 67 89 33 21"],
+          ["phone", "Contact", "02 77 73 07 24"],
         ]} />
       </Section>
 

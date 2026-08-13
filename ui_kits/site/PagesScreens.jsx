@@ -6,7 +6,7 @@ function RoutotScreen({ go }) {
       <Section py="var(--sp-12)">
         <div style={{ display: "grid", gridTemplateColumns: "1fr .9fr", gap: "var(--sp-16)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
-            <Bg2 tone="jaune" icon="sparkles">Ouverture 2026</Bg2>
+            <Bg2 tone="jaune" icon="sparkles">Ouverture mars 2027</Bg2>
             <h1 style={{ font: "var(--fw-regular) var(--fs-display-2)/var(--lh-display) var(--font-display)", color: "var(--text-display)" }}>Une micro-crèche à Routot, pensée comme une maison</h1>
             <p style={{ font: "var(--fw-regular) var(--fs-body-lg)/var(--lh-body) var(--font-body)", maxWidth: "52ch" }}>
               Dix places, une équipe stable et des espaces conçus avec des matières naturelles : Routot prolonge à quelques
@@ -50,7 +50,7 @@ function RoutotScreen({ go }) {
       <Section tone="jaune" py="var(--section-y-tight)" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
         <SH2 eyebrow="Calendrier" title="Les étapes d'ici l'ouverture" style={{ marginBottom: "var(--sp-8)" }} />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-6)" }}>
-          {[["Automne 2025", "Travaux et aménagement"], ["Hiver 2026", "Recrutement de l'équipe"], ["Printemps 2026", "Visites des familles"], ["Septembre 2026", "Ouverture des portes"]].map(([when, what], i) => (
+          {[["Été 2026", "Travaux et aménagement"], ["Automne 2026", "Recrutement de l'équipe"], ["Début 2027", "Visites des familles"], ["Mars 2027", "Ouverture des portes"]].map(([when, what], i) => (
             <C2 key={when} style={{ display: "flex", flexDirection: "column", gap: "var(--sp-2)" }}>
               <span style={{ font: "var(--fw-bold) var(--fs-caption)/1.2 var(--font-body)", letterSpacing: "var(--ls-eyebrow)", textTransform: "uppercase", color: i === 3 ? "var(--jaune-700)" : "var(--text-eyebrow)" }}>{when}</span>
               <span style={{ font: "var(--fw-semibold) var(--fs-body)/1.5 var(--font-body)", color: "var(--text-strong)" }}>{what}</span>
@@ -96,7 +96,7 @@ function JourneeScreen({ go }) {
             </C2>
             <C2 tone="violet">
               <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)", marginBottom: "var(--sp-3)" }}>Ce que vous recevez chaque soir</h3>
-              <p style={{ font: "var(--fw-regular) var(--fs-body-sm)/var(--lh-body) var(--font-body)" }}>Repas, sommeil, couches, activités et un mot sur l'humeur du jour — de vive voix, et dans le carnet numérique.</p>
+              <p style={{ font: "var(--fw-regular) var(--fs-body-sm)/var(--lh-body) var(--font-body)" }}>Repas, sommeil, couches, activités et un mot sur l'humeur du jour — de vive voix, au moment des retrouvailles.</p>
             </C2>
           </div>
         </div>
@@ -131,24 +131,7 @@ function TarifsScreen({ go }) {
   return (
     <div>
       <Section py="var(--sp-12)">
-        <SH2 eyebrow="Tarification" title="Un tarif clair, des aides réelles" lead="Le tarif horaire comprend l'accueil, les repas, les goûters et les produits de soin. Aucun supplément caché." />
-      </Section>
-      <Section tone="card" py="var(--section-y-tight)">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "var(--gap-cards)", alignItems: "stretch" }}>
-          {[["Accueil régulier", "9,50 €", "de l'heure", "Contrat mensuel de 80 à 200 h, réservé à l'année.", "violet"],
-            ["Temps partiel", "9,90 €", "de l'heure", "À partir de deux journées par semaine, contrat annuel.", "jaune"],
-            ["Accueil occasionnel", "10,50 €", "de l'heure", "Selon les places disponibles, réservation à la semaine.", "violet"]].map(([titre, prix, unite, desc, tone]) => (
-            <C2 key={titre} tone={tone} style={{ display: "flex", flexDirection: "column", gap: "var(--sp-3)" }}>
-              <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)" }}>{titre}</h3>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "var(--sp-2)", flexWrap: "nowrap" }}>
-                <span style={{ font: "var(--fw-regular) var(--fs-display-3)/1.1 var(--font-display)", color: "var(--text-display)", whiteSpace: "nowrap" }}>{prix}</span>
-                <span style={{ font: "var(--fw-regular) var(--fs-body-sm)/1.4 var(--font-body)", color: "var(--text-muted)", whiteSpace: "nowrap" }}>{unite}</span>
-              </div>
-              <p style={{ font: "var(--fw-regular) var(--fs-body-sm)/var(--lh-body) var(--font-body)" }}>{desc}</p>
-            </C2>
-          ))}
-        </div>
-        <p style={{ marginTop: "var(--sp-5)", font: "var(--fw-regular) var(--fs-caption)/1.6 var(--font-body)", color: "var(--text-muted)" }}>Tarifs indicatifs 2026, à confirmer — repas, goûters, couches et produits de soin inclus.</p>
+        <SH2 eyebrow="Tarification" title="Un tarif clair, des aides réelles" lead="Le tarif horaire comprend l'accueil, les repas, les goûters et les produits de soin. La grille tarifaire vous est communiquée lors de votre visite ou sur simple demande." />
       </Section>
       <Section>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--gap-cards)", alignItems: "start" }}>
@@ -159,7 +142,6 @@ function TarifsScreen({ go }) {
               <LI2 icon="check" title="Les couches et produits de soin" />
               <LI2 icon="check" title="Les activités et sorties" />
               <LI2 icon="check" title="Le suivi avec la référente de votre enfant" />
-              <LI2 icon="check" title="Le carnet de transmission numérique" />
             </ul>
             <img src={A + "illustrations/tirelire-t.png"} alt="" style={{ position: "absolute", right: "var(--sp-5)", bottom: "var(--sp-5)", width: 84, opacity: .9 }} />
           </C2>
@@ -237,8 +219,8 @@ function EquipeScreen({ go }) {
             <h2 style={{ font: "var(--type-section)", marginBottom: "var(--sp-6)" }}>Notre façon de travailler</h2>
             <ul style={{ margin: 0, padding: 0 }}>
               <LI2 icon="user-check" title="Une référente par enfant">Un repère stable pour l'enfant, un interlocuteur clair pour la famille.</LI2>
-              <LI2 icon="graduation-cap" tone="jaune" title="Formation continue">Chaque professionnelle suit au moins une formation par an (signes, langage, motricité).</LI2>
-              <LI2 icon="users-round" title="Analyse de la pratique">Une psychologue accompagne l'équipe tous les deux mois.</LI2>
+              <LI2 icon="graduation-cap" tone="jaune" title="Formation continue">Les professionnelles suivent des formations pour enrichir leurs pratiques (signes, langage, motricité).</LI2>
+              <LI2 icon="users-round" title="Analyse de la pratique">Une infirmière de puériculture accompagne l'équipe dans sa pratique.</LI2>
               <LI2 icon="heart" tone="jaune" title="Des équipes stables">Peu de turn-over : les enfants retrouvent les mêmes visages toute l'année.</LI2>
             </ul>
           </div>

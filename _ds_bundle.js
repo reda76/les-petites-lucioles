@@ -966,6 +966,7 @@ function SiteFooter({
   logo,
   columns = [],
   contact = [],
+  onNavigate,
   legal = "© 2026 Les Petites Lucioles – Tous droits réservés",
   style
 }) {
@@ -1023,10 +1024,15 @@ function SiteFooter({
     key: link
   }, /*#__PURE__*/React.createElement("a", {
     href: "#",
+    onClick: e => {
+      e.preventDefault();
+      onNavigate && onNavigate(link);
+    },
     style: {
       font: "var(--fw-regular) var(--fs-caption)/1.4 var(--font-body)",
       color: "var(--text-body)",
-      textDecoration: "none"
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, link))))), /*#__PURE__*/React.createElement("ul", {
     style: {

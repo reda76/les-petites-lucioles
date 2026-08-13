@@ -78,7 +78,7 @@ function PreinscriptionScreen() {
             </C3>
             <C3 tone="jaune">
               <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)", marginBottom: "var(--sp-3)" }}>Besoin de nous parler ?</h3>
-              <p style={{ font: "var(--fw-regular) var(--fs-body-sm)/var(--lh-body) var(--font-body)" }}>07 67 89 33 21<br />contact@les-petites-lucioles.fr</p>
+              <p style={{ font: "var(--fw-regular) var(--fs-body-sm)/var(--lh-body) var(--font-body)" }}>02 77 73 07 24<br />lespetiteslucioles27@gmail.com</p>
             </C3>
           </div>
         </div>

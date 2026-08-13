@@ -52,7 +52,7 @@ function Creches({ go }) {
         <CrecheCard image={A + "photos/salle-bosgouet.png"} badge="Bosgouet" title="La maison des Lucioles" address="60 rue Guy de Milleville – 27310 Bosgouet" ornament={A + "illustrations/feuillage-violet-t.png"} onClick={() => go("La maison des Lucioles")}>
           Un lieu chaleureux et familial où les enfants s'épanouissent chaque jour.
         </CrecheCard>
-        <CrecheCard image={A + "photos/salle-routot.png"} badge="Routot" badgeIcon="map-pin" title="Micro-crèche à Routot" address="Ouverture 2026 – 27350 Routot" linkLabel="Découvrir Routot" ornament={A + "illustrations/feuillage-jaune-t.png"} onClick={() => go("Routot")}>
+        <CrecheCard image={A + "photos/salle-routot.png"} badge="Routot" badgeIcon="map-pin" title="Micro-crèche à Routot" address="Ouverture mars 2027 – 27350 Routot" linkLabel="Découvrir Routot" ornament={A + "illustrations/feuillage-jaune-t.png"} onClick={() => go("Routot")}>
           Un nouvel espace pensé pour accueillir les enfants dans un cadre doux et sécurisé.
         </CrecheCard>
       </div>
@@ -66,7 +66,7 @@ function RoutotFocus({ go }) {
       <div style={{ display: "grid", gridTemplateColumns: ".95fr 1.05fr", gap: "var(--sp-16)", alignItems: "center" }}>
         <PhotoBlob src={A + "photos/salle-routot.png"} shape="soft" height={380} mat={false} />
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
-          <Badge tone="jaune" icon="sparkles">Nouveau — ouverture 2026</Badge>
+          <Badge tone="jaune" icon="sparkles">Nouveau — ouverture mars 2027</Badge>
           <h2 style={{ font: "var(--type-section)" }}>Notre nouvelle micro-crèche à Routot</h2>
           <p style={{ font: "var(--type-body)", maxWidth: "56ch" }}>
             Routot prolonge ce que nous faisons à Bosgouet : dix places, une équipe stable, des espaces pensés
@@ -127,6 +127,27 @@ function EquipeTarifs({ go }) {
   );
 }
 
+function Partenaires() {
+  const logos = [
+    [A + "partenaires/caf-eure.png", "Caf de l'Eure"],
+    [A + "partenaires/region-normandie.png", "Région Normandie"],
+    [A + "partenaires/pont-audemer-val-de-risle.png", "Communauté de communes Pont-Audemer Val de Risle"],
+    [A + "partenaires/roumois-seine.png", "Communauté de communes Roumois Seine"],
+  ];
+  return (
+    <Section py="var(--section-y-tight)">
+      <SectionHeading eyebrow="Ils nous accompagnent" title="Nos partenaires" style={{ marginBottom: "var(--sp-10)" }} />
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "stretch", gap: "var(--gap-cards)", flexWrap: "wrap" }}>
+        {logos.map(([src, name]) => (
+          <div key={name} style={{ background: "var(--surface-card)", borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-card)", padding: "var(--sp-5) var(--sp-8)", display: "flex", alignItems: "center", justifyContent: "center", width: 250, height: 120 }}>
+            <img src={src} alt={name} title={name} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function HomeScreen({ go }) {
   return (
     <div>
@@ -136,6 +157,7 @@ function HomeScreen({ go }) {
       <RoutotFocus go={go} />
       <JourneeTeaser go={go} />
       <EquipeTarifs go={go} />
+      <Partenaires />
       <Section py="var(--section-y-tight)">
         <CTABanner title="Et si votre enfant devenait une petite Luciole ?" image={A + "photos/enfant-sourire.png"} ornament={A + "illustrations/abeille-t.png"} onClick={() => go("Pré-inscription")}>
           Vous avez une question ou souhaitez pré-inscrire votre enfant ? Écrivez-nous, nous vous répondons sous 48 heures.
@@ -145,4 +167,4 @@ function HomeScreen({ go }) {
   );
 }
 
-Object.assign(window, { HomeScreen, Hero, Valeurs, Creches, RoutotFocus, JourneeTeaser, EquipeTarifs });
+Object.assign(window, { HomeScreen, Hero, Valeurs, Creches, RoutotFocus, JourneeTeaser, EquipeTarifs, Partenaires });
