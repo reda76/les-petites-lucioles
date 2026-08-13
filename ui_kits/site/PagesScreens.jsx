@@ -230,9 +230,12 @@ function EquipeScreen({ go }) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "var(--sp-10)", flexWrap: "wrap" }}>
           <div>
             <h2 style={{ font: "var(--type-section)", fontSize: "var(--fs-title)", marginBottom: "var(--sp-3)" }}>Vous souhaitez rejoindre l'équipe ?</h2>
-            <p style={{ font: "var(--type-body)", maxWidth: "52ch" }}>Nous recrutons régulièrement des auxiliaires de puériculture et des accompagnantes éducatives, à Bosgouet comme à Routot.</p>
+            <p style={{ font: "var(--type-body)", maxWidth: "52ch" }}>Nous recrutons régulièrement des auxiliaires de puériculture et des accompagnantes éducatives, à Bosgouet comme à Routot. Envoyez-nous votre CV et votre lettre de motivation par e-mail.</p>
           </div>
-          <B2 variant="primary" icon="mail" onClick={() => go("Pré-inscription")}>Envoyer une candidature</B2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-2)", alignItems: "center" }}>
+            <B2 variant="primary" icon="mail" href="mailto:lespetiteslucioles27@gmail.com?subject=Candidature%20%E2%80%94%20Les%20Petites%20Lucioles">Envoyer une candidature</B2>
+            <span style={{ font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)", color: "var(--text-muted)" }}>lespetiteslucioles27@gmail.com</span>
+          </div>
         </div>
       </Section>
     </div>

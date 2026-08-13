@@ -4774,11 +4774,23 @@ function EquipeScreen({
       font: "var(--type-body)",
       maxWidth: "52ch"
     }
-  }, "Nous recrutons r\xE9guli\xE8rement des auxiliaires de pu\xE9riculture et des accompagnantes \xE9ducatives, \xE0 Bosgouet comme \xE0 Routot.")), /*#__PURE__*/React.createElement(B2, {
+  }, "Nous recrutons r\xE9guli\xE8rement des auxiliaires de pu\xE9riculture et des accompagnantes \xE9ducatives, \xE0 Bosgouet comme \xE0 Routot. Envoyez-nous votre CV et votre lettre de motivation par e-mail.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--sp-2)",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement(B2, {
     variant: "primary",
     icon: "mail",
-    onClick: () => go("Pré-inscription")
-  }, "Envoyer une candidature"))));
+    href: "mailto:lespetiteslucioles27@gmail.com?subject=Candidature%20%E2%80%94%20Les%20Petites%20Lucioles"
+  }, "Envoyer une candidature"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)",
+      color: "var(--text-muted)"
+    }
+  }, "lespetiteslucioles27@gmail.com")))));
 }
 Object.assign(window, {
   RoutotScreen,
