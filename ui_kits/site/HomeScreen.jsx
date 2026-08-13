@@ -14,7 +14,7 @@ function Hero({ go }) {
           <p style={{ font: "var(--fw-regular) var(--fs-body-lg)/var(--lh-body) var(--font-body)", color: "var(--text-body)", maxWidth: "46ch" }}>
             Un lieu de vie bienveillant, sécurisant et chaleureux pour accompagner les tout-petits dans leurs découvertes et leurs premiers pas vers l'autonomie.
           </p>
-          <div style={{ display: "flex", gap: "var(--gap-inline)", flexWrap: "wrap", marginTop: "var(--sp-3)" }}>
+          <div className="btn-row" style={{ display: "flex", gap: "var(--gap-inline)", flexWrap: "wrap", marginTop: "var(--sp-3)" }}>
             <Button variant="primary" icon="house" onClick={() => go("La maison des Lucioles")}>Découvrir Bosgouet</Button>
             <Button variant="secondary" icon="map-pin" onClick={() => go("Routot")}>Découvrir Routot</Button>
             <Button variant="accent" icon="clipboard-list" onClick={() => go("Pré-inscription")}>Pré-inscription</Button>
@@ -78,7 +78,7 @@ function RoutotFocus({ go }) {
             à jouer. Les familles sont accompagnées avant l'arrivée, pendant l'adaptation, puis chaque matin par une
             transmission tranquille.
           </p>
-          <div style={{ display: "flex", gap: "var(--gap-inline)", marginTop: "var(--sp-2)" }}>
+          <div className="btn-row" style={{ display: "flex", gap: "var(--gap-inline)", marginTop: "var(--sp-2)" }}>
             <Button variant="primary" icon="map-pin" onClick={() => go("Routot")}>Découvrir le projet de Routot</Button>
             <Button variant="secondary" onClick={() => go("Pré-inscription")}>Pré-inscrire mon enfant</Button>
           </div>

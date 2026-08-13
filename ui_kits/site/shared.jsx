@@ -11,4 +11,18 @@ function Section({ children, tone = "page", py = "var(--section-y)", style }) {
   );
 }
 
-Object.assign(window, { A, NAV, DS, Section });
+function MobileActionBar({ go, hidden }) {
+  if (hidden) return null;
+  return (
+    <div className="mab">
+      <a className="mab-tel" href="tel:+33277730724" aria-label="Appeler la micro-crèche">
+        <DS.Icon name="phone" size={18} color="var(--action-secondary-text)" /> Appeler
+      </a>
+      <button className="mab-cta" type="button" onClick={() => go("Pré-inscription")}>
+        <DS.Icon name="clipboard-list" size={18} color="var(--action-accent-text)" /> Pré-inscrire mon enfant
+      </button>
+    </div>
+  );
+}
+
+Object.assign(window, { A, NAV, DS, Section, MobileActionBar });

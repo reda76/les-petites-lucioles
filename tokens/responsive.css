@@ -1,10 +1,11 @@
 /* Socle responsive.
    Le site est composé en styles inline adossés aux tokens : ce fichier fait
-   respirer les tokens selon la largeur d'écran et fournit les grilles
-   adaptatives .rgrid-* dont les colonnes desktop vivent ici (les styles inline
-   des écrans gardent display:grid, gap et alignItems, mais plus les colonnes). */
+   respirer les tokens selon la largeur d'écran, fournit les grilles adaptatives
+   .rgrid-* (leurs colonnes desktop vivent ici) et porte l'interface mobile :
+   en-tête sticky + menu plein écran (.sh-*), barre d'action basse (.mab). */
 
 body{overflow-x:clip}
+a,button{touch-action:manipulation}
 
 /* --- Grilles adaptatives --- */
 .rgrid-hero{grid-template-columns:1.05fr .95fr}
@@ -14,6 +15,9 @@ body{overflow-x:clip}
 .rgrid-4{grid-template-columns:repeat(4,1fr)}
 .rgrid-form-layout{grid-template-columns:1.4fr .6fr}
 .rgrid-form{grid-template-columns:1fr 1fr}
+
+/* --- Interface mobile : masquée sur desktop --- */
+.sh-mobile,.mab{display:none}
 
 @media (max-width:1024px){
   :root{--fs-display-1:52px;--fs-display-2:42px;--fs-display-3:34px;--section-y:72px;--section-y-tight:56px;--page-gutter:32px}
@@ -25,23 +29,48 @@ body{overflow-x:clip}
   .rgrid-4{grid-template-columns:repeat(2,1fr)}
   /* Ornements absolus : ils débordent du cadre ou chevauchent le texte en étroit */
   .deco,.deco-sm{display:none}
-  /* En-tête : logo + navigation empilés et centrés */
-  header{flex-wrap:wrap;justify-content:center;row-gap:var(--sp-2)}
-  header nav{flex-wrap:wrap;justify-content:center;row-gap:var(--sp-2);column-gap:var(--sp-5)}
+
+  /* --- En-tête compact sticky --- */
+  .sh{position:sticky;top:0;z-index:120;background:var(--surface-page);border-bottom:1px solid var(--border-soft);padding:8px var(--page-gutter) !important;gap:var(--sp-4) !important}
+  .sh a>img{width:52px !important;height:52px !important}
+  .sh-nav{display:none !important}
+  .sh-mobile{display:flex;align-items:center;gap:var(--sp-3)}
+  .sh-cta{min-height:44px;padding:10px 16px;border:none;border-radius:var(--r-pill);background:var(--action-accent);color:var(--action-accent-text);font:var(--fw-bold) 14px/1.2 var(--font-body);letter-spacing:var(--ls-button);cursor:pointer;box-shadow:var(--shadow-xs)}
+  .sh-cta:active{background:var(--action-accent-hover)}
+  .sh-burger{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;background:var(--violet-50);border:1px solid var(--border-violet);border-radius:var(--r-sm);cursor:pointer}
+
+  /* --- Menu plein écran --- */
+  .sh-overlay{position:fixed;inset:0;z-index:400;background:var(--surface-page);display:flex;flex-direction:column;gap:var(--sp-6);padding:calc(8px + env(safe-area-inset-top)) var(--page-gutter) calc(var(--sp-8) + env(safe-area-inset-bottom));overflow:auto;min-height:100dvh;animation:sh-entree .22s var(--ease-soft)}
+  .sh-overlay-top{display:flex;justify-content:space-between;align-items:center;min-height:52px}
+  .sh-overlay-nav{display:flex;flex-direction:column}
+  .sh-overlay-actions{margin-top:auto;display:flex;flex-direction:column;gap:var(--sp-4);padding-top:var(--sp-6)}
+  .sh-overlay-tel{display:flex;align-items:center;justify-content:center;gap:var(--sp-3);min-height:48px;border:1.5px solid var(--action-secondary-border);border-radius:var(--r-button);color:var(--action-secondary-text);font:var(--fw-semibold) 16px/1.2 var(--font-body);text-decoration:none}
+
+  /* --- Barre d'action basse (appel + pré-inscription) --- */
+  .mab{position:fixed;left:0;right:0;bottom:0;z-index:110;display:flex;gap:var(--sp-3);padding:10px var(--page-gutter) calc(10px + env(safe-area-inset-bottom));background:var(--surface-page);border-top:1px solid var(--border-soft)}
+  .mab-tel{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 var(--sp-4);border:1.5px solid var(--action-secondary-border);border-radius:var(--r-button);color:var(--action-secondary-text);font:var(--fw-semibold) 15px/1.2 var(--font-body);text-decoration:none;background:var(--surface-card)}
+  .mab-cta{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:none;border-radius:var(--r-button);background:var(--action-accent);color:var(--action-accent-text);font:var(--fw-bold) 16px/1.2 var(--font-body);cursor:pointer;box-shadow:var(--shadow-button)}
+  .mab-cta:active{background:var(--action-accent-hover)}
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+
   /* Pied de page : 5 colonnes -> 2 colonnes */
   .footer-grid{grid-template-columns:1fr 1fr !important;row-gap:var(--sp-8) !important}
-  /* Bandeau CTA : photo masquée, texte pleine largeur */
+  /* Bandeau CTA : la photo passe en bandeau supérieur */
   .cta-banner{grid-template-columns:1fr !important}
-  .cta-banner>img{display:none}
+  .cta-banner>img{order:-1;height:190px !important;border-radius:0 !important;transform:none !important}
+  /* Retour tactile discret */
+  .sh-cta:active,.mab-cta:active,.sh-burger:active{transform:scale(.97)}
 }
 
 @media (max-width:640px){
   :root{--fs-display-1:34px;--fs-display-2:30px;--fs-display-3:25px;--fs-title:22px;--fs-subtitle:19px;--fs-body-lg:17px;--section-y:56px;--section-y-tight:40px;--page-gutter:18px;--gap-cards:16px}
   .rgrid-form{grid-template-columns:1fr}
   .rgrid-form>*{grid-column:auto !important}
-  header a>img{width:64px !important;height:64px !important}
-  header nav{gap:var(--sp-2) var(--sp-4) !important}
-  header nav a{font-size:13px !important}
+  /* iOS zoome sur les champs < 16px : on force la taille minimale */
+  input,select,textarea{font-size:16px !important}
+  /* Groupes de boutons : pleine largeur, empilés */
+  .btn-row{flex-direction:column;align-items:stretch;width:100%}
+  .btn-row>*{width:100%;justify-content:center}
   .photo-blob img{height:320px !important}
   /* Le halo du photo-blob (inset négatif) dépassait du bord droit de 4px */
   .photo-blob>div{inset:-14px -16px -20px -12px !important}
@@ -50,4 +79,10 @@ body{overflow-x:clip}
   /* Bouton d'envoi du formulaire : passe au-dessus de la mention « Sans engagement » */
   .form-actions{flex-wrap:wrap}
   .footer-legal{flex-wrap:wrap;gap:var(--sp-2);justify-content:center !important;text-align:center}
+}
+
+@keyframes sh-entree{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .sh-overlay{animation:none}
+  .sh-cta:active,.mab-cta:active,.sh-burger:active{transform:none}
 }

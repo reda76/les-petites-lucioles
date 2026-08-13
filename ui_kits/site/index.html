@@ -31,7 +31,8 @@ function App(){
     {screens[page]}
     <SiteFooter logo="../../assets/logo.png" onNavigate={go}
       columns={[["Accueil","La maison des Lucioles","Une journée chez les Lucioles"],["Tarification","L'équipe des Lucioles","Pré-inscription"]]}
-      contact={[{icon:"phone",label:"02 77 73 07 24"},{icon:"mail",label:"lespetiteslucioles27@gmail.com"},{icon:"facebook",label:"Les Petites Lucioles"}]} />
+      contact={[{icon:"phone",label:"02 77 73 07 24",href:"tel:+33277730724"},{icon:"mail",label:"lespetiteslucioles27@gmail.com",href:"mailto:lespetiteslucioles27@gmail.com"},{icon:"facebook",label:"Les Petites Lucioles"}]} />
+    <MobileActionBar go={go} hidden={page==="Pré-inscription"} />
   </div>);
 }
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);

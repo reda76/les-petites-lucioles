@@ -26,7 +26,7 @@ function MaisonScreen({ go }) {
               Une maison normande transformée en micro-crèche : dix places, de grandes fenêtres, un jardin clos
               et une équipe qui connaît chaque enfant par son prénom.
             </p>
-            <div style={{ display: "flex", gap: "var(--gap-inline)" }}>
+            <div className="btn-row" style={{ display: "flex", gap: "var(--gap-inline)" }}>
               <B4 variant="primary" icon="calendar-heart" onClick={() => go("Pré-inscription")}>Demander une visite</B4>
               <B4 variant="secondary" onClick={() => go("Une journée chez les Lucioles")}>Voir une journée type</B4>
             </div>

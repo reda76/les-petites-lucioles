@@ -131,7 +131,7 @@ Object.assign(__ds_scope, { Card });
 // components/core/Icon.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-const ICON_BASE = "https://cdn.jsdelivr.net/npm/lucide-static@0.469.0/icons/";
+const ICON_BASE = "../../assets/icons/";
 function Icon({
   name,
   size = 20,
@@ -140,7 +140,7 @@ function Icon({
   style,
   ...rest
 }) {
-  const url = `${ICON_BASE}${name}.svg`;
+  const url = (window.__ICON_DATA && window.__ICON_DATA[name]) || `${ICON_BASE}${name}.svg`;
   return /*#__PURE__*/React.createElement("span", _extends({
     "aria-hidden": "true"
   }, rest, {
@@ -1049,7 +1049,8 @@ function SiteFooter({
     }
   }, contact.map(({
     icon,
-    label
+    label,
+    href
   }) => /*#__PURE__*/React.createElement("li", {
     key: label,
     style: {
@@ -1063,7 +1064,10 @@ function SiteFooter({
     name: icon,
     size: 16,
     color: "var(--violet-700)"
-  }), label)))), /*#__PURE__*/React.createElement("div", {
+  }), href ? /*#__PURE__*/React.createElement("a", {
+    href,
+    style: { color: "inherit", font: "inherit" }
+  }, label) : label)))), /*#__PURE__*/React.createElement("div", {
     className: "footer-legal",
     style: {
       background: "var(--surface-inverse)",
@@ -1093,58 +1097,42 @@ function SiteHeader({
   items = [],
   active,
   onNavigate,
+  cta = "Pré-inscription",
+  phone = "02 77 73 07 24",
+  phoneHref = "tel:+33277730724",
   style
 }) {
-  return /*#__PURE__*/React.createElement("header", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      gap: "var(--sp-10)",
-      padding: "var(--sp-5) var(--page-gutter)",
-      ...style
-    }
-  }, /*#__PURE__*/React.createElement("a", {
+  const h = React.createElement;
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+  const go = (item) => { setOpen(false); onNavigate && onNavigate(item); };
+  const logoLink = h("a", {
     href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onNavigate && onNavigate(items[0]);
-    },
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: "var(--sp-3)",
-      textDecoration: "none"
-    }
-  }, logo ? /*#__PURE__*/React.createElement("img", {
-    src: logo,
-    alt: brand,
-    style: {
-      width: 92,
-      height: 92,
-      objectFit: "contain"
-    }
-  }) : /*#__PURE__*/React.createElement("span", {
-    style: {
-      font: "var(--type-card-title)",
-      color: "var(--text-display)"
-    }
-  }, brand)), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: "var(--sp-8)"
-    }
-  }, items.map(item => {
+    onClick: e => { e.preventDefault(); go(items[0]); },
+    style: { display: "flex", alignItems: "center", gap: "var(--sp-3)", textDecoration: "none" }
+  }, logo ? h("img", { src: logo, alt: brand, style: { width: 92, height: 92, objectFit: "contain" } })
+          : h("span", { style: { font: "var(--type-card-title)", color: "var(--text-display)" } }, brand));
+  const link = (item, big) => {
     const isActive = item === active;
-    return /*#__PURE__*/React.createElement("a", {
+    return h("a", {
       key: item,
       href: "#",
-      onClick: e => {
-        e.preventDefault();
-        onNavigate && onNavigate(item);
-      },
-      style: {
+      "aria-current": isActive ? "page" : undefined,
+      onClick: e => { e.preventDefault(); go(item); },
+      style: big ? {
+        font: `${isActive ? "var(--fw-semibold)" : "var(--fw-regular)"} 24px/1.3 var(--font-display)`,
+        color: isActive ? "var(--text-accent)" : "var(--text-strong)",
+        textDecoration: "none",
+        padding: "var(--sp-4) 0",
+        minHeight: 48,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderBottom: "1px solid var(--border-soft)"
+      } : {
         font: `${isActive ? "var(--fw-semibold)" : "var(--fw-regular)"} var(--fs-body-sm)/1.3 var(--font-body)`,
         color: isActive ? "var(--text-accent)" : "var(--text-body)",
         textDecoration: "none",
@@ -1152,8 +1140,42 @@ function SiteHeader({
         borderBottom: isActive ? "2px solid var(--action-primary)" : "2px solid transparent",
         transition: "var(--transition-interactive)"
       }
-    }, item);
-  })));
+    }, item, big && isActive ? h(__ds_scope.Icon, { name: "sparkles", size: 18, color: "var(--jaune-600)" }) : null);
+  };
+  return h("header", {
+    className: "sh",
+    style: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--sp-10)", padding: "var(--sp-5) var(--page-gutter)", ...style }
+  },
+    logoLink,
+    h("nav", { className: "sh-nav", style: { display: "flex", alignItems: "center", gap: "var(--sp-8)" } }, items.map(item => link(item, false))),
+    h("div", { className: "sh-mobile" },
+      h("button", { className: "sh-cta", type: "button", onClick: () => go(cta) }, cta),
+      h("button", {
+        className: "sh-burger",
+        type: "button",
+        "aria-label": "Ouvrir le menu",
+        "aria-expanded": open,
+        onClick: () => setOpen(true)
+      }, h(__ds_scope.Icon, { name: "menu", size: 26, color: "var(--violet-800)" }))
+    ),
+    open ? h("div", { className: "sh-overlay", role: "dialog", "aria-modal": true, "aria-label": "Menu" },
+      h("div", { className: "sh-overlay-top" },
+        h("span", { style: { font: "var(--type-card-title)", color: "var(--text-display)" } }, brand),
+        h("button", {
+          className: "sh-burger",
+          type: "button",
+          "aria-label": "Fermer le menu",
+          onClick: () => setOpen(false)
+        }, h(__ds_scope.Icon, { name: "x", size: 26, color: "var(--violet-800)" }))
+      ),
+      h("nav", { className: "sh-overlay-nav" }, items.map(item => link(item, true))),
+      h("div", { className: "sh-overlay-actions" },
+        h(__ds_scope.Button, { variant: "accent", icon: "clipboard-list", onClick: () => go(cta), style: { width: "100%", justifyContent: "center" } }, "Pré-inscrire mon enfant"),
+        h("a", { className: "sh-overlay-tel", href: phoneHref },
+          h(__ds_scope.Icon, { name: "phone", size: 18, color: "var(--violet-800)" }), phone)
+      )
+    ) : null
+  );
 }
 Object.assign(__ds_scope, { SiteHeader });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/SiteHeader.jsx", error: String((e && e.message) || e) }); }
