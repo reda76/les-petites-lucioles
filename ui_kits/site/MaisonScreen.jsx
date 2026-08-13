@@ -2,7 +2,7 @@ const { Button: B4, Badge: Bg4, SectionHeading: SH4, Card: C4, ListItem: LI4, Ph
 
 function InfoGrid({ items }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-6)" }}>
+    <div className="rgrid-4" style={{ display: "grid", gap: "var(--sp-6)" }}>
       {items.map(([icon, label, value], i) => (
         <C4 key={label} tone={i % 2 ? "jaune" : "violet"} padding="var(--sp-6)" style={{ display: "flex", flexDirection: "column", gap: "var(--sp-3)" }}>
           <M4 icon={icon} tone={i % 2 ? "jaune" : "violet"} size={48} />
@@ -18,7 +18,7 @@ function MaisonScreen({ go }) {
   return (
     <div>
       <Section py="var(--sp-12)">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr .9fr", gap: "var(--sp-16)", alignItems: "center" }}>
+        <div className="rgrid-hero" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
             <Bg4 icon="house">Bosgouet — depuis février 2024</Bg4>
             <h1 style={{ font: "var(--fw-regular) var(--fs-display-2)/var(--lh-display) var(--font-display)", color: "var(--text-display)" }}>La maison des Lucioles</h1>
@@ -46,7 +46,7 @@ function MaisonScreen({ go }) {
       </Section>
 
       <Section>
-        <div style={{ display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: "var(--sp-16)", alignItems: "center" }}>
+        <div className="rgrid-hero" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
           <div>
             <h2 style={{ font: "var(--type-section)", marginBottom: "var(--sp-6)" }}>Les espaces de la maison</h2>
             <ul style={{ margin: 0, padding: 0 }}>
@@ -68,7 +68,7 @@ function MaisonScreen({ go }) {
 
       <Section tone="jaune" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
         <SH4 eyebrow="Le projet pédagogique" title="Ce que nous défendons, tous les jours" style={{ marginBottom: "var(--sp-10)" }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "var(--sp-8)" }}>
+        <div className="rgrid-3" style={{ display: "grid", gap: "var(--sp-8)" }}>
           {[
             ["sprout", "La motricité libre", "L'enfant n'est jamais installé dans une position qu'il n'a pas acquise seul. Il explore, essaie, recommence."],
             ["messages-square", "Le langage avant tout", "On nomme, on explique, on prévient avant d'agir : « je vais te prendre dans les bras »."],

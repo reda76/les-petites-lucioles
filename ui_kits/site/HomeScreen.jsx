@@ -4,7 +4,7 @@ const { ValueCard, CrecheCard, PhotoBlob, CTABanner, AvatarRow } = DS;
 function Hero({ go }) {
   return (
     <section style={{ padding: "var(--sp-10) var(--page-gutter) var(--sp-20)", position: "relative" }}>
-      <div style={{ maxWidth: "var(--container)", margin: "0 auto", display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: "var(--sp-16)", alignItems: "center" }}>
+      <div className="rgrid-hero" style={{ maxWidth: "var(--container)", margin: "0 auto", display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-6)", alignItems: "flex-start" }}>
           <span style={{ font: "var(--type-eyebrow)", letterSpacing: "var(--ls-eyebrow)", textTransform: "uppercase", color: "var(--text-eyebrow)" }}>Micro-crèches à taille humaine</span>
           <h1 style={{ font: "var(--type-hero)", color: "var(--encre-900)" }}>
@@ -21,9 +21,9 @@ function Hero({ go }) {
           </div>
         </div>
         <div style={{ position: "relative" }}>
-          <img src={A + "illustrations/abeille-t.png"} alt="" style={{ position: "absolute", left: -70, top: 40, width: 70, opacity: .95 }} />
+          <img className="deco" src={A + "illustrations/abeille-t.png"} alt="" style={{ position: "absolute", left: -70, top: 40, width: 70, opacity: .95 }} />
           <PhotoBlob src={A + "photos/hero-bebe.png"} height={470} />
-          <img src={A + "illustrations/feuillage-violet-t.png"} alt="" style={{ position: "absolute", right: -34, bottom: -30, width: 120 }} />
+          <img className="deco" src={A + "illustrations/feuillage-violet-t.png"} alt="" style={{ position: "absolute", right: -34, bottom: -30, width: 120 }} />
         </div>
       </div>
     </section>
@@ -34,7 +34,7 @@ function Valeurs() {
   return (
     <Section tone="card" py="var(--section-y-tight)" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
       <SectionHeading title="Notre façon d'accueillir" style={{ marginBottom: "var(--sp-12)" }} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-8)" }}>
+      <div className="rgrid-4" style={{ display: "grid", gap: "var(--sp-8)" }}>
         <ValueCard icon="users" title="À taille humaine">Un petit nombre d'enfants pour un accompagnement individualisé.</ValueCard>
         <ValueCard icon="heart-handshake" tone="jaune" title="Bienveillance">Une équipe attentive aux besoins de chaque enfant et de sa famille.</ValueCard>
         <ValueCard icon="sprout" title="Éveil & autonomie">Des activités adaptées au rythme et au développement de chaque enfant.</ValueCard>
@@ -48,7 +48,7 @@ function Creches({ go }) {
   return (
     <Section>
       <SectionHeading title="Nos deux micro-crèches en Normandie" style={{ marginBottom: "var(--sp-12)" }} />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--gap-cards)" }}>
+      <div className="rgrid-2" style={{ display: "grid", gap: "var(--gap-cards)" }}>
         <CrecheCard image={A + "photos/salle-bosgouet.png"} badge="Bosgouet" title="La maison des Lucioles" address="60 rue Guy de Milleville – 27310 Bosgouet" ornament={A + "illustrations/feuillage-violet-t.png"} onClick={() => go("La maison des Lucioles")}>
           Un lieu chaleureux et familial où les enfants s'épanouissent chaque jour.
         </CrecheCard>
@@ -63,7 +63,7 @@ function Creches({ go }) {
 function RoutotFocus({ go }) {
   return (
     <Section tone="jaune" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
-      <div style={{ display: "grid", gridTemplateColumns: ".95fr 1.05fr", gap: "var(--sp-16)", alignItems: "center" }}>
+      <div className="rgrid-split" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
         <PhotoBlob src={A + "photos/salle-routot.png"} shape="soft" height={380} mat={false} />
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
           <Badge tone="jaune" icon="sparkles">Nouveau — ouverture mars 2027</Badge>
@@ -91,7 +91,7 @@ function RoutotFocus({ go }) {
 function JourneeTeaser({ go }) {
   return (
     <Section>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--sp-12)", alignItems: "center", background: "var(--surface-card)", borderRadius: "var(--r-2xl)", padding: "var(--sp-6)", boxShadow: "var(--shadow-card)" }}>
+      <div className="rgrid-2" style={{ display: "grid", gap: "var(--sp-12)", alignItems: "center", background: "var(--surface-card)", borderRadius: "var(--r-2xl)", padding: "var(--sp-6)", boxShadow: "var(--shadow-card)" }}>
         <img src={A + "photos/enfants-jeux.png"} alt="" style={{ width: "100%", height: 300, objectFit: "cover", borderRadius: "var(--r-photo)" }} />
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start", paddingRight: "var(--sp-8)" }}>
           <h2 style={{ font: "var(--type-section)", fontSize: "var(--fs-title)" }}>Une journée chez les Lucioles</h2>
@@ -109,7 +109,7 @@ function JourneeTeaser({ go }) {
 function EquipeTarifs({ go }) {
   return (
     <Section py="var(--section-y-tight)">
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--gap-cards)" }}>
+      <div className="rgrid-2" style={{ display: "grid", gap: "var(--gap-cards)" }}>
         <Card tone="violet" style={{ position: "relative" }}>
           <h3 style={{ font: "var(--type-card-title)", fontSize: "var(--fs-title)", color: "var(--text-accent)", marginBottom: "var(--sp-4)" }}>Une équipe engagée</h3>
           <p style={{ font: "var(--type-body)", maxWidth: "44ch" }}>Notre équipe de professionnelles passionnées accompagne chaque enfant avec bienveillance, attention et respect de son rythme.</p>
@@ -120,7 +120,7 @@ function EquipeTarifs({ go }) {
           <h3 style={{ font: "var(--type-card-title)", fontSize: "var(--fs-title)", color: "var(--text-accent)", marginBottom: "var(--sp-4)" }}>Tarification</h3>
           <p style={{ font: "var(--type-body)", maxWidth: "44ch" }}>Le tarif comprend notamment l'accueil, les repas et les produits de soin. Les familles peuvent également bénéficier d'aides financières selon leur situation.</p>
           <Button variant="accent" iconRight="arrow-right" style={{ marginTop: "var(--sp-8)" }} onClick={() => go("Tarification")}>Découvrir nos tarifs et les aides</Button>
-          <img src={A + "illustrations/tirelire-t.png"} alt="" style={{ position: "absolute", right: "var(--sp-6)", bottom: "var(--sp-5)", width: 96 }} />
+          <img src={A + "illustrations/tirelire-t.png"} alt="" className="deco-sm" style={{ position: "absolute", right: "var(--sp-6)", bottom: "var(--sp-5)", width: 96 }} />
         </Card>
       </div>
     </Section>

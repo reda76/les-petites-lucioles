@@ -59,6 +59,7 @@ function PhotoBlob({
     circle: "var(--r-pill)"
   };
   return /*#__PURE__*/React.createElement("div", _extends({
+    className: "photo-blob",
     style: {
       position: "relative",
       ...style
@@ -405,6 +406,7 @@ function CrecheCard({
   }, linkLabel)), ornament ? /*#__PURE__*/React.createElement("img", {
     src: ornament,
     alt: "",
+    className: "deco-sm",
     style: {
       position: "absolute",
       right: "var(--sp-5)",
@@ -538,6 +540,7 @@ function CTABanner({
   style
 }) {
   return /*#__PURE__*/React.createElement("div", {
+    className: "cta-banner",
     style: {
       position: "relative",
       display: "grid",
@@ -976,6 +979,7 @@ function SiteFooter({
       ...style
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-grid",
     style: {
       maxWidth: "var(--container)",
       margin: "0 auto",
@@ -1060,6 +1064,7 @@ function SiteFooter({
     size: 16,
     color: "var(--violet-700)"
   }), label)))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-legal",
     style: {
       background: "var(--surface-inverse)",
       color: "var(--text-on-inverse)",

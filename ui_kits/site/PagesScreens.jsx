@@ -4,7 +4,7 @@ function RoutotScreen({ go }) {
   return (
     <div>
       <Section py="var(--sp-12)">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr .9fr", gap: "var(--sp-16)", alignItems: "center" }}>
+        <div className="rgrid-hero" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-5)", alignItems: "flex-start" }}>
             <Bg2 tone="jaune" icon="sparkles">Ouverture mars 2027</Bg2>
             <h1 style={{ font: "var(--fw-regular) var(--fs-display-2)/var(--lh-display) var(--font-display)", color: "var(--text-display)" }}>Une micro-crèche à Routot, pensée comme une maison</h1>
@@ -19,9 +19,9 @@ function RoutotScreen({ go }) {
       </Section>
       <Section tone="card">
         <SH2 eyebrow="Le projet" title="Ce qui nous guide à Routot" lead="Un accueil à taille humaine, le respect du rythme de l'enfant et un accompagnement réel des familles." style={{ marginBottom: "var(--sp-12)" }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "var(--sp-8)" }}>
+        <div className="rgrid-3" style={{ display: "grid", gap: "var(--sp-8)" }}>
           {[
-            ["home", "Un accueil à taille humaine", "Dix enfants au maximum, deux à trois professionnelles présentes : chacun est connu, reconnu et accompagné individuellement."],
+            ["house", "Un accueil à taille humaine", "Dix enfants au maximum, deux à trois professionnelles présentes : chacun est connu, reconnu et accompagné individuellement."],
             ["moon", "Le rythme de l'enfant d'abord", "On ne réveille pas un enfant qui dort, on ne force pas un enfant à manger. La journée s'ajuste à lui, pas l'inverse."],
             ["messages-square", "Les familles accompagnées", "Visite avant l'inscription, adaptation progressive, transmissions quotidiennes et rendez-vous réguliers avec la référente."],
           ].map(([icon, title, body], i) => (
@@ -34,7 +34,7 @@ function RoutotScreen({ go }) {
         </div>
       </Section>
       <Section>
-        <div style={{ display: "grid", gridTemplateColumns: ".9fr 1.1fr", gap: "var(--sp-16)", alignItems: "center" }}>
+        <div className="rgrid-split" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
           <PB2 src={A + "photos/enfants-jeux.png"} shape="rounded" height={330} mat={false} />
           <div>
             <h2 style={{ font: "var(--type-section)", marginBottom: "var(--sp-6)" }}>Les espaces</h2>
@@ -49,7 +49,7 @@ function RoutotScreen({ go }) {
       </Section>
       <Section tone="jaune" py="var(--section-y-tight)" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
         <SH2 eyebrow="Calendrier" title="Les étapes d'ici l'ouverture" style={{ marginBottom: "var(--sp-8)" }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-6)" }}>
+        <div className="rgrid-4" style={{ display: "grid", gap: "var(--sp-6)" }}>
           {[["Été 2026", "Travaux et aménagement"], ["Automne 2026", "Recrutement de l'équipe"], ["Début 2027", "Visites des familles"], ["Mars 2027", "Ouverture des portes"]].map(([when, what], i) => (
             <C2 key={when} style={{ display: "flex", flexDirection: "column", gap: "var(--sp-2)" }}>
               <span style={{ font: "var(--fw-bold) var(--fs-caption)/1.2 var(--font-body)", letterSpacing: "var(--ls-eyebrow)", textTransform: "uppercase", color: i === 3 ? "var(--jaune-700)" : "var(--text-eyebrow)" }}>{when}</span>
@@ -84,7 +84,7 @@ function JourneeScreen({ go }) {
         <SH2 eyebrow="Le quotidien" title="Une journée chez les Lucioles" lead="Chaque moment est un repère. Les horaires donnent le cadre, l'enfant donne le tempo." />
       </Section>
       <Section tone="card" py="var(--section-y-tight)">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--sp-16)", alignItems: "start" }}>
+        <div className="rgrid-2" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "start" }}>
           <ul style={{ margin: 0, padding: 0 }}>
             {moments.map(([time, title, body]) => <LI2 key={time} time={time} title={title}>{body}</LI2>)}
           </ul>
@@ -103,7 +103,7 @@ function JourneeScreen({ go }) {
       </Section>
       <Section>
         <SH2 eyebrow="Les activités" title="Ce que l'on propose au fil des semaines" style={{ marginBottom: "var(--sp-10)" }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-6)" }}>
+        <div className="rgrid-4" style={{ display: "grid", gap: "var(--sp-6)" }}>
           {[["palette", "Arts plastiques", "violet"], ["music", "Éveil musical", "jaune"], ["book-open", "Lecture et comptines", "violet"], ["footprints", "Motricité libre", "jaune"], ["sprout", "Jardinage", "violet"], ["chef-hat", "Ateliers cuisine", "jaune"], ["bath", "Jeux d'eau", "violet"], ["hand-heart", "Massages et relaxation", "jaune"]].map(([icon, title, tone]) => (
             <C2 key={title} padding="var(--sp-6)" style={{ display: "flex", flexDirection: "column", gap: "var(--sp-3)", alignItems: "flex-start" }}>
               <M2 icon={icon} tone={tone} size={48} />
@@ -134,7 +134,7 @@ function TarifsScreen({ go }) {
         <SH2 eyebrow="Tarification" title="Un tarif clair, des aides réelles" lead="Le tarif horaire comprend l'accueil, les repas, les goûters et les produits de soin. La grille tarifaire vous est communiquée lors de votre visite ou sur simple demande." />
       </Section>
       <Section>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--gap-cards)", alignItems: "start" }}>
+        <div className="rgrid-2" style={{ display: "grid", gap: "var(--gap-cards)", alignItems: "start" }}>
           <C2 style={{ position: "relative" }}>
             <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)", marginBottom: "var(--sp-4)" }}>Ce que comprend le tarif</h3>
             <ul style={{ margin: 0, padding: 0 }}>
@@ -143,7 +143,7 @@ function TarifsScreen({ go }) {
               <LI2 icon="check" title="Les activités et sorties" />
               <LI2 icon="check" title="Le suivi avec la référente de votre enfant" />
             </ul>
-            <img src={A + "illustrations/tirelire-t.png"} alt="" style={{ position: "absolute", right: "var(--sp-5)", bottom: "var(--sp-5)", width: 84, opacity: .9 }} />
+            <img src={A + "illustrations/tirelire-t.png"} alt="" className="deco-sm" style={{ position: "absolute", right: "var(--sp-5)", bottom: "var(--sp-5)", width: 84, opacity: .9 }} />
           </C2>
           <C2 tone="violet">
             <h3 style={{ font: "var(--type-card-title)", color: "var(--text-accent)", marginBottom: "var(--sp-4)" }}>Estimer votre reste à charge</h3>
@@ -171,7 +171,7 @@ function TarifsScreen({ go }) {
       </Section>
       <Section tone="jaune" py="var(--section-y-tight)" style={{ borderRadius: "var(--r-2xl)", maxWidth: 1240, margin: "0 auto" }}>
         <SH2 title="Les aides possibles" lead="Selon votre situation, l'accueil en micro-crèche revient souvent moins cher qu'il n'y paraît." style={{ marginBottom: "var(--sp-8)" }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "var(--sp-6)" }}>
+        <div className="rgrid-3" style={{ display: "grid", gap: "var(--sp-6)" }}>
           {[["banknote", "Le CMG « structure »", "Versé par la CAF chaque mois, il couvre une grande partie du coût selon vos revenus et le nombre d'enfants."],
             ["receipt", "Le crédit d'impôt", "50 % des sommes restant à votre charge, dans la limite du plafond annuel en vigueur."],
             ["building-2", "Les aides employeur", "Certaines entreprises réservent des places ou participent aux frais de garde : pensez à demander."]].map(([icon, t, b], i) => (
@@ -201,7 +201,7 @@ function EquipeScreen({ go }) {
         <SH2 eyebrow="L'équipe" title="Les visages des Lucioles" lead="Une équipe stable, formée à la petite enfance, qui connaît chaque enfant et chaque famille par son prénom." />
       </Section>
       <Section tone="card" py="var(--section-y-tight)">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--sp-8)" }}>
+        <div className="rgrid-4" style={{ display: "grid", gap: "var(--sp-8)" }}>
           {team.map(([name, role, mot], idx) => (
             <div key={name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--sp-3)", textAlign: "center" }}>
               <img src={PORTRAITS[idx]} alt="" style={{ width: 132, height: 132, borderRadius: "var(--r-pill)", objectFit: "cover", boxShadow: "var(--shadow-card)" }} />
@@ -213,7 +213,7 @@ function EquipeScreen({ go }) {
         </div>
       </Section>
       <Section>
-        <div style={{ display: "grid", gridTemplateColumns: ".9fr 1.1fr", gap: "var(--sp-16)", alignItems: "center" }}>
+        <div className="rgrid-split" style={{ display: "grid", gap: "var(--sp-16)", alignItems: "center" }}>
           <PB2 src={A + "photos/hero-bebe.png"} shape="soft" height={340} />
           <div>
             <h2 style={{ font: "var(--type-section)", marginBottom: "var(--sp-6)" }}>Notre façon de travailler</h2>

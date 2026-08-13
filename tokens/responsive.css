@@ -1,0 +1,53 @@
+/* Socle responsive.
+   Le site est composé en styles inline adossés aux tokens : ce fichier fait
+   respirer les tokens selon la largeur d'écran et fournit les grilles
+   adaptatives .rgrid-* dont les colonnes desktop vivent ici (les styles inline
+   des écrans gardent display:grid, gap et alignItems, mais plus les colonnes). */
+
+body{overflow-x:clip}
+
+/* --- Grilles adaptatives --- */
+.rgrid-hero{grid-template-columns:1.05fr .95fr}
+.rgrid-split{grid-template-columns:.95fr 1.05fr}
+.rgrid-2{grid-template-columns:1fr 1fr}
+.rgrid-3{grid-template-columns:repeat(3,1fr)}
+.rgrid-4{grid-template-columns:repeat(4,1fr)}
+.rgrid-form-layout{grid-template-columns:1.4fr .6fr}
+.rgrid-form{grid-template-columns:1fr 1fr}
+
+@media (max-width:1024px){
+  :root{--fs-display-1:52px;--fs-display-2:42px;--fs-display-3:34px;--section-y:72px;--section-y-tight:56px;--page-gutter:32px}
+  .rgrid-form-layout{grid-template-columns:1fr}
+}
+
+@media (max-width:900px){
+  .rgrid-hero,.rgrid-split,.rgrid-2,.rgrid-3{grid-template-columns:1fr}
+  .rgrid-4{grid-template-columns:repeat(2,1fr)}
+  /* Ornements absolus : ils débordent du cadre ou chevauchent le texte en étroit */
+  .deco,.deco-sm{display:none}
+  /* En-tête : logo + navigation empilés et centrés */
+  header{flex-wrap:wrap;justify-content:center;row-gap:var(--sp-2)}
+  header nav{flex-wrap:wrap;justify-content:center;row-gap:var(--sp-2);column-gap:var(--sp-5)}
+  /* Pied de page : 5 colonnes -> 2 colonnes */
+  .footer-grid{grid-template-columns:1fr 1fr !important;row-gap:var(--sp-8) !important}
+  /* Bandeau CTA : photo masquée, texte pleine largeur */
+  .cta-banner{grid-template-columns:1fr !important}
+  .cta-banner>img{display:none}
+}
+
+@media (max-width:640px){
+  :root{--fs-display-1:34px;--fs-display-2:30px;--fs-display-3:25px;--fs-title:22px;--fs-subtitle:19px;--fs-body-lg:17px;--section-y:56px;--section-y-tight:40px;--page-gutter:18px;--gap-cards:16px}
+  .rgrid-form{grid-template-columns:1fr}
+  .rgrid-form>*{grid-column:auto !important}
+  header a>img{width:64px !important;height:64px !important}
+  header nav{gap:var(--sp-2) var(--sp-4) !important}
+  header nav a{font-size:13px !important}
+  .photo-blob img{height:320px !important}
+  /* Le halo du photo-blob (inset négatif) dépassait du bord droit de 4px */
+  .photo-blob>div{inset:-14px -16px -20px -12px !important}
+  /* Ornement abeille du bandeau CTA : il effleure le titre en étroit */
+  .cta-banner div>img{display:none}
+  /* Bouton d'envoi du formulaire : passe au-dessus de la mention « Sans engagement » */
+  .form-actions{flex-wrap:wrap}
+  .footer-legal{flex-wrap:wrap;gap:var(--sp-2);justify-content:center !important;text-align:center}
+}

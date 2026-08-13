@@ -45,9 +45,9 @@ function PreinscriptionScreen() {
         <SH3 eyebrow="Pré-inscription" title="Et si votre enfant devenait une petite Luciole ?" lead="Quelques informations suffisent — nous revenons vers vous pour convenir d'une visite." />
       </Section>
       <Section tone="card" py="var(--section-y-tight)">
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr .6fr", gap: "var(--sp-10)", alignItems: "start" }}>
+        <div className="rgrid-form-layout" style={{ display: "grid", gap: "var(--sp-10)", alignItems: "start" }}>
           <C3 style={{ padding: "var(--sp-12)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--sp-6)" }}>
+            <div className="rgrid-form" style={{ display: "grid", gap: "var(--sp-6)" }}>
               <F3 label="Prénom de l'enfant" required><I3 value={prenom} onChange={(e) => setPrenom(e.target.value)} placeholder="Camille" /></F3>
               <F3 label="Date de naissance (ou terme prévu)"><I3 type="date" /></F3>
               <F3 label="Votre nom" required><I3 placeholder="Dupont" /></F3>
@@ -60,7 +60,7 @@ function PreinscriptionScreen() {
               <F3 label="Date d'entrée souhaitée"><I3 type="date" /></F3>
               <F3 label="Votre message" style={{ gridColumn: "span 2" }}><I3 multiline rows={4} placeholder="Parlez-nous de votre enfant, de vos horaires, de vos questions…" /></F3>
               <Ck3 checked={ok} onChange={setOk} label="J'accepte d'être recontacté(e) par l'équipe des Lucioles au sujet de ma demande." style={{ gridColumn: "span 2" }} />
-              <div style={{ gridColumn: "span 2", display: "flex", gap: "var(--gap-inline)", alignItems: "center" }}>
+              <div className="form-actions" style={{ gridColumn: "span 2", display: "flex", gap: "var(--gap-inline)", alignItems: "center" }}>
                 <B3 variant="accent" icon="clipboard-list" disabled={!ok} onClick={() => ok && setSent(true)}>Envoyer ma pré-inscription</B3>
                 <span style={{ font: "var(--fw-regular) var(--fs-caption)/1.5 var(--font-body)", color: "var(--text-muted)" }}>Sans engagement.</span>
               </div>
