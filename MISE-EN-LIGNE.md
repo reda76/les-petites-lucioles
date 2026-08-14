@@ -1,8 +1,9 @@
 # Mise en ligne — les-petites-lucioles.fr
 
-Le site est hébergé sur GitHub Pages (`reda76/les-petites-lucioles`) et servi sur
-https://reda76.github.io/les-petites-lucioles/. Le domaine `les-petites-lucioles.fr`
-est chez OVH et sert pour l'instant l'ancien site WordPress.
+Dépôt canonique : `lespetiteslucioles/website` (compte GitHub du client), servi par
+GitHub Pages avec le domaine personnalisé `les-petites-lucioles.fr`.
+Copie de travail historique : `reda76/les-petites-lucioles`.
+Le domaine est géré chez OVH (compte du client) et servait auparavant un WordPress.
 
 ⚠️ La bascule DNS **remplace l'ancien site WordPress** par le nouveau. Avant de la faire,
 confirmer avec le client qu'il n'y a plus rien à récupérer sur le WordPress (textes,
@@ -19,8 +20,8 @@ Espace client OVH → **Noms de domaine** → `les-petites-lucioles.fr` → **Zo
    Puis **ajouter** trois autres enregistrements A identiques vers :
    `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 2. **Modifier** (ou créer) l'enregistrement du sous-domaine **www** :
-   type **CNAME**, cible `reda76.github.io.`
-   (supprimer un éventuel ancien A/CNAME `www` pointant vers WordPress)
+   type **CNAME**, cible `lespetiteslucioles.github.io.`
+   (supprimer d'abord tout autre enregistrement `www` — A, AAAA, TXT — un CNAME doit être seul)
 3. **Ne rien toucher d'autre** — en particulier les enregistrements **MX**
    (courrier) et **TXT** (SPF, vérifications) existants.
 
