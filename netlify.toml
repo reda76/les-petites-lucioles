@@ -1,0 +1,3 @@
+# Site statique : rien à construire, tout est servi depuis la racine du dépôt.
+[build]
+  publish = "."
